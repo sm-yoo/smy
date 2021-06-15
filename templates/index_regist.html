@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}">
+</head>
+<body>
+    <h1>학생 정보 입력</h1>
+    <form action="/regist" method="get">
+        <label for="tidx">훈련생 인덱스</label>
+        <input type="text" name="tidx" id="tidx">
+        <label for="tname">훈련생 이름</label>
+        <input type="text" name="tname" id="tname">
+        <label for="tsex">훈련생 성별</label>
+        <input type="text" name="tsex" id="tsex">
+        <label for="tmajor">훈련생 전공</label>
+        <input type="text" name="tmajor" id="tmajor">
+        <label for="tcourse">훈련생 과정</label>
+        <input type="text" name="tcourse" id="tcourse">
+        <button type="submit">입력!</button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}">
+
+    <style>
+
+        table th {
+            font-weight: normal; }
+
+        table td {
+            border-bottom:solid 1px #f8f8f8;
+        }
+
+        table > thead > tr > th,
+        table > tbody > tr > th,
+        table > tfoot > tr > th,
+        table > thead > tr > td,
+        table > tbody > tr > td,
+        table > tfoot > tr > td {
+            padding: 5px; 
+        }
+
+        table thead tr th {
+            font-size: 12px;
+            color: #121212;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            background: #aaaaaa;
+            text-align: left;
+        }
+        #container {
+            width: 840px;
+            margin: 10px auto;
+            padding: 20px;
+            border: 1px solid #000000;
+        }
+        #header {
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #000000;
+        }
+        #content {
+            width: 530px;
+            padding: 20px;
+            margin-bottom: 20px;
+            float: left;
+            border: 1px solid #000000;
+        }
+        #sidebar {
+            width: 210px;
+            padding: 20px;
+            margin-bottom: 20px;
+            float: right;
+            border: 1px solid #000000;
+        }
+        #footer {
+            clear: both;
+            padding: 20px;
+            border: 1px solid #000000;
+                    text-align: center;
+        }
+        @media ( max-width: 820px ) {
+            #container {
+            width: auto;
+            }
+            #content {
+            float: none;
+            width: auto;
+            }
+            #sidebar {
+            float: none;
+            width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>훈련생 정보 조회</h1>
+    <form action="/search" method="get">
+        <label for="filter1">훈련생 이름</label>
+        <input type="text" name="filter1" id="filter1">
+        <label for="filter2">훈련생 과정</label>
+        <input type="text" name="filter2" id="filter2">
+        <button type="submit">검색!</button>
+        <br>
+        <br>
+
+    </form>
+
+    <div id="content">
+        <h2>훈련생 테이블</h2>
+        <table>
+          <thead>
+            <tr><th>학번</th>
+            <th>이름</th>
+            <th>성별</th>
+            <th>전공</th>
+            <th>교육과정</th>
+            <th>교육종료일자</th>
+            </tr>
+          </thead>
+          <tbody>
+                    {% for i in data %}
+                        <tr>
+                        <td>{{i[0]}}</td>
+                        <td>{{i[1]}}</td>
+                        <td>{{i[2]}}</td>
+                        <td>{{i[3]}}</td>
+                        <td>{{i[4]}}</td>
+                        <td>{{i[5]}}</td>
+                        </tr>
+                    {% endfor %}
+          </tbody>
+        </table>
+      </div>
+</body>
+</html>
