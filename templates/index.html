@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}">
+</head>
+<body>
+    <h1>키워드 대결?!?!?!</h1>
+    <form action="/" method="get">
+        <label for="keyword1">첫번째 키워드</label>
+        <input type="text" name="keyword1" id="keyword1">
+        <label for="keyword2">두번째 키워드</label>
+        <input type="text" name="keyword2" id="keyword2">
+        <button type="submit">검색!</button>
+    </form>
+    <div id="visual_result">
+        {% if data %}
+            {% for k, v in data.items() %}<div class="bar bar{{loop.index}}" value="{{v}}">{{k}}</div>{% endfor %}
+        {% endif %}
+    </div>
+    <script>
+        // bar 를 그려주는 함수
+            function draw_bar(){
+            var bars = document.querySelectorAll('.bar');
+
+            var total = 0;
+            // 반복을 통해샤 div에 width를 설정해준다.
+            for (var i=0; i<bars.length; i++){
+                total += parseInt(bars[i].getAttribute('value'));
+            };
+            console.log('total = '+ total);
+
+            // 반복을 통해서 div에 width를 설정해준다.
+            for (var i=0; i<bars.length; i++){
+                w = bars[i].getAttribute('value');
+                console.log(w);
+                bars[i].style.width = parseInt(w)/total*100 + '%';
+            };
+        }
+
+        // 시간차 실행
+        setTimeout(draw_bar,500);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+print("test.py의 __name__:", __name__)
